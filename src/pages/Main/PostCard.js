@@ -4,7 +4,7 @@ dayjs.locale("ko");
 
 const PostCard = ({ target }) => {
   return (
-    <div className="w-[240px] h-[320px] rounded-[10px] border-[1px] border-gray-600 flex flex-col">
+    <div className="w-[240px] h-[320px] rounded-[10px] border-[1px] border-gray-600 flex flex-col hover:shadow-figma">
       {/* 썸네일 사진 */}
       <img
         src=""

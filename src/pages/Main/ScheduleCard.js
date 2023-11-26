@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 
 const ScheduleCard = ({ target }) => {
   return (
-    <div className="w-[180px] h-[180px] rounded-2xl border-[1px] border-gray-600 flex flex-col">
+    <div className="w-[180px] h-[180px] rounded-2xl border-[1px] border-gray-600 flex flex-col hover:shadow-figma">
       {/* 타이틀 */}
       <div className="flex items-center justify-around h-10 border-b-[1px] border-b-gray-600">
         <div className="flex items-center">

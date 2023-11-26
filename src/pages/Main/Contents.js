@@ -8,7 +8,7 @@ const Contents = () => {
   const post = useRecoilValue(postAtom); // 게시글 더미 데이터
   const schedule = useRecoilValue(scheduleAtom); // 스케줄 더미 데이터
   return (
-    <div className="w-[840px] h-[800px] rounded-2xl flex flex-col sticky top-24 bg-white">
+    <div className="w-[840px] h-[800px] rounded-2xl flex flex-col sticky top-24 bg-white shadow-figma">
       {/* 타이틀 */}
       <div className="flex items-center justify-center h-10 font-bold text-white bg-gray-600 rounded-t-2xl">
         메인 화면
