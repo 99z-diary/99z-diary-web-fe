@@ -1,5 +1,6 @@
 import TopBar from "components/TopBar";
 import Login from "pages/Auth/Login";
+import Main from "pages/Main/Main";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
         <TopBar />
         <Routes>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/" element={<Main />}></Route>
         </Routes>
       </div>
     </>
