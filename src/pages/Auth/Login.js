@@ -1,15 +1,18 @@
+import Alert from "popup/Alert";
+import { login } from "api/authApi";
 import { useState } from "react";
+import { useRecoilValue, useRecoilState } from "recoil";
+import { userSelector } from "recoil/userAtom";
+import { alertAtom } from "recoil/alertAtom";
+import { useAlert } from "utils/useAlert";
 
-/**
- * 로그인 페이지
- *
- * info : 이름, 전화번호 저장
- */
 const Login = () => {
   const [info, setInfo] = useState({
     name: "",
     phone: "",
-  });
+  }); // 입력 정보
+  const [userInfo, setUserInfo] = useRecoilState(userSelector); // 유저 정보
+  const alert = useAlert(); // alert 제어
   return (
     <>
       <div className="flex flex-col items-center w-[300px] h-fit mx-auto pt-60">
@@ -46,13 +49,22 @@ const Login = () => {
         {/* 로그인 버튼 */}
         <button
           className="w-full h-12 bg-gray-600 rounded-[10px] font-semibold text-white mt-4"
-          onClick={() => {
-            console.log(info);
+          onClick={async () => {
+            const uid = await login(info);
+            if (uid) {
+              const tmp = {
+                uid: uid,
+                name: info.name,
+                phone: info.phone,
+              };
+              setUserInfo(tmp);
+            } else alert.onAndOff("정확한 정보를 입력해주세요");
           }}
         >
           로그인
         </button>
       </div>
+      {useRecoilValue(alertAtom).state && <Alert />}
     </>
   );
 };
