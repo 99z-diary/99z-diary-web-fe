@@ -1,38 +1,23 @@
 import PostCard from "./PostCard";
 import ScheduleCard from "./ScheduleCard";
-import Alert from "popup/Alert";
 import { getRecentPost } from "api/postApi";
 import { getRecentSchedule } from "api/scheduleApi";
 import { useState, useEffect } from "react";
-import { useRecoilValue } from "recoil";
-import { alertAtom } from "recoil/alertAtom";
-import { useAlert } from "utils/useAlert";
 
 const Contents = () => {
   const [posts, setPosts] = useState([]); // 최근 게시글 리스트
   const [schedules, setSchedules] = useState([]); // 가까운 스케줄 리스트
-  const alert = useAlert(); // alert 제어
   useEffect(() => {
     // 최근 게시글 조회
-    getRecentPost()
-      .then((response) => {
-        const tmp = [...response.data];
-        setPosts(tmp);
-      })
-      .catch((error) => {
-        alert.onAndOff("최근 게시글 조회에 실패했습니다");
-        console.log(error);
-      });
+    getRecentPost().then((response) => {
+      const tmp = [...response.data];
+      setPosts(tmp);
+    });
     // 가까운 스케줄 조회
-    getRecentSchedule()
-      .then((response) => {
-        const tmp = [...response.data];
-        setSchedules(tmp);
-      })
-      .catch((error) => {
-        alert.onAndOff("디데이 스케줄 조회에 실패했습니다");
-        console.log(error);
-      });
+    getRecentSchedule().then((response) => {
+      const tmp = [...response.data];
+      setSchedules(tmp);
+    });
   }, []);
   return (
     <>
@@ -72,7 +57,6 @@ const Contents = () => {
           </div>
         </div>
       </div>
-      {useRecoilValue(alertAtom).state && <Alert />}
     </>
   );
 };

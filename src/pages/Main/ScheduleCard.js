@@ -4,7 +4,7 @@ const ScheduleCard = ({ target }) => {
   return (
     <div className="h-[200px] rounded-2xl border-[1px] border-gray-600 flex flex-col hover:shadow-figma">
       {/* 타이틀 */}
-      <div className="flex items-center justify-between h-10 border-b-[1px] border-b-gray-600 px-2">
+      <div className="flex items-center justify-between h-10 border-b-[1px] border-b-gray-600 px-3">
         <div className="flex justify-between items-center w-[180px]">
           {target.type ? (
             <div className="w-[10px] h-[10px] rounded-[5px] bg-schedule-play"></div>
@@ -68,7 +68,7 @@ const ScheduleCard = ({ target }) => {
             />
           </svg>
           <span className="text-sm font-medium ml-[10px]">
-            {target.how_long}
+            {target.duration}
           </span>
         </div>
         {/* 집합장소 */}
@@ -102,7 +102,7 @@ const ScheduleCard = ({ target }) => {
             />
           </svg>
           <span className="text-sm font-medium ml-[10px]">
-            {target.how_many}명
+            {target.participants.length}명
           </span>
         </div>
       </div>
