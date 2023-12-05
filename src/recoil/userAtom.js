@@ -3,7 +3,7 @@ import { atom, selector } from "recoil";
 export const userAtom = atom({
   key: "userAtom",
   default: {
-    uid: -1,
+    user_id: -1,
     name: "",
     phone: "",
   },
