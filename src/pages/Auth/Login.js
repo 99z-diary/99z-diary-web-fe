@@ -50,15 +50,12 @@ const Login = () => {
         <button
           className="w-full h-12 bg-gray-600 rounded-[10px] font-semibold text-white mt-4"
           onClick={async () => {
-            const uid = await login(info);
-            if (uid) {
-              const tmp = {
-                uid: uid,
-                name: info.name,
-                phone: info.phone,
-              };
-              setUserInfo(tmp);
-            } else alert.onAndOff("정확한 정보를 입력해주세요");
+            await login(info)
+              .then((response) => {
+                console.log("로그인 : ", response.data);
+                setUserInfo({ ...response.data });
+              })
+              .catch((error) => alert.onAndOff(error.response.data.message));
           }}
         >
           로그인
