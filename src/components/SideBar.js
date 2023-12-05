@@ -23,7 +23,7 @@ const SideBar = () => {
     }
   }, [main]);
   return (
-    <div className="w-[250px] h-[350px] rounded-2xl flex flex-col sticky top-24 bg-white shadow-figma">
+    <div className="w-[250px] h-[350px] rounded-2xl flex flex-col sticky top-20 bg-white shadow-figma">
       {/* 타이틀 */}
       <div className="flex items-center justify-center h-10 font-bold text-white bg-gray-600 rounded-t-2xl">
         Menu

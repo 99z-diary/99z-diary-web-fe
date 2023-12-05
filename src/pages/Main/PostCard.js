@@ -37,9 +37,9 @@ const PostCard = ({ target }) => {
                 <path
                   fill="none"
                   stroke="#4a4e69"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M12 5v14m6-8l-6-6m-6 6l6-6"
                 />
               </g>

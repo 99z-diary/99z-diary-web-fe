@@ -2,24 +2,26 @@ import dayjs from "dayjs";
 
 const ScheduleCard = ({ target }) => {
   return (
-    <div className="w-[180px] h-[180px] rounded-2xl border-[1px] border-gray-600 flex flex-col hover:shadow-figma">
+    <div className="h-[200px] rounded-2xl border-[1px] border-gray-600 flex flex-col hover:shadow-figma">
       {/* 타이틀 */}
-      <div className="flex items-center justify-around h-10 border-b-[1px] border-b-gray-600">
-        <div className="flex items-center">
+      <div className="flex items-center justify-between h-10 border-b-[1px] border-b-gray-600 px-3">
+        <div className="flex justify-between items-center w-[180px]">
           {target.type ? (
             <div className="w-[10px] h-[10px] rounded-[5px] bg-schedule-play"></div>
           ) : (
             <div className="w-[10px] h-[10px] rounded-[5px] bg-schedule-escape"></div>
           )}
-          <span className="font-medium ml-[10px]">{target.title}</span>
+          <div className="font-medium line-clamp-1 w-[160px]">
+            {target.title}
+          </div>
         </div>
         {/* 남은 날짜 */}
         <span className="font-medium text-red-500">
-          D{dayjs(new Date()).diff(dayjs(target.when), "day")}
+          D{dayjs(new Date()).diff(dayjs(target.meet_time), "day")}
         </span>
       </div>
       {/* 상세 정보 */}
-      <div className="w-full h-[110px] flex flex-col justify-between my-auto px-4">
+      <div className="w-full h-[140px] flex flex-col justify-between my-auto px-4">
         {/* 장소 */}
         <div className="flex">
           <svg
@@ -49,46 +51,42 @@ const ScheduleCard = ({ target }) => {
             />
           </svg>
           <span className="text-sm font-medium ml-[10px]">
-            {dayjs(target.when).format("HH:mm")}
+            {dayjs(target.meet_time).format("MM월 DD일(ddd) HH시 mm분")}
           </span>
         </div>
-        {/* 방탈이라면 소요시간 아니라면 집합장소 */}
+        {/* 소요시간 */}
         <div className="flex">
-          {target.type ? (
-            <>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="currentColor"
-                  d="M12 12c-1.1 0-2-.9-2-2s.9-2 2-2s2 .9 2 2s-.9 2-2 2m6-1.8C18 6.57 15.35 4 12 4s-6 2.57-6 6.2c0 2.34 1.95 5.44 6 9.14c4.05-3.7 6-6.8 6-9.14M12 2c4.2 0 8 3.22 8 8.2c0 3.32-2.67 7.25-8 11.8c-5.33-4.55-8-8.48-8-11.8C4 5.22 7.8 2 12 2"
-                />
-              </svg>
-              <span className="text-sm font-medium ml-[10px]">
-                {target.where}
-              </span>
-            </>
-          ) : (
-            <>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="currentColor"
-                  d="M16.5 5.5a2 2 0 0 0 2-2a2 2 0 0 0-2-2a2 2 0 0 0-2 2a2 2 0 0 0 2 2m-3.6 13.9l1-4.4l2.1 2v6h2v-7.5l-2.1-2l.6-3A7.298 7.298 0 0 0 22 13v-2c-1.76.03-3.4-.89-4.3-2.4l-1-1.6c-.36-.6-1-1-1.7-1c-.3 0-.5.1-.8.1L9 8.3V13h2V9.6l1.8-.7l-1.6 8.1l-4.9-1l-.4 2zM4 9a1 1 0 0 1-1-1a1 1 0 0 1 1-1h3v2zm1-4a1 1 0 0 1-1-1a1 1 0 0 1 1-1h5v2zm-2 8a1 1 0 0 1-1-1a1 1 0 0 1 1-1h4v2z"
-                />
-              </svg>
-              <span className="text-sm font-medium ml-[10px]">
-                {target.howlong}
-              </span>
-            </>
-          )}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              d="M16.5 5.5a2 2 0 0 0 2-2a2 2 0 0 0-2-2a2 2 0 0 0-2 2a2 2 0 0 0 2 2m-3.6 13.9l1-4.4l2.1 2v6h2v-7.5l-2.1-2l.6-3A7.298 7.298 0 0 0 22 13v-2c-1.76.03-3.4-.89-4.3-2.4l-1-1.6c-.36-.6-1-1-1.7-1c-.3 0-.5.1-.8.1L9 8.3V13h2V9.6l1.8-.7l-1.6 8.1l-4.9-1l-.4 2zM4 9a1 1 0 0 1-1-1a1 1 0 0 1 1-1h3v2zm1-4a1 1 0 0 1-1-1a1 1 0 0 1 1-1h5v2zm-2 8a1 1 0 0 1-1-1a1 1 0 0 1 1-1h4v2z"
+            />
+          </svg>
+          <span className="text-sm font-medium ml-[10px]">
+            {target.duration}
+          </span>
+        </div>
+        {/* 집합장소 */}
+        <div className="flex">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              d="M12 12c-1.1 0-2-.9-2-2s.9-2 2-2s2 .9 2 2s-.9 2-2 2m6-1.8C18 6.57 15.35 4 12 4s-6 2.57-6 6.2c0 2.34 1.95 5.44 6 9.14c4.05-3.7 6-6.8 6-9.14M12 2c4.2 0 8 3.22 8 8.2c0 3.32-2.67 7.25-8 11.8c-5.33-4.55-8-8.48-8-11.8C4 5.22 7.8 2 12 2"
+            />
+          </svg>
+          <span className="text-sm font-medium ml-[10px]">
+            {target.meet_place}
+          </span>
         </div>
         {/* 몇명 */}
         <div className="flex">
@@ -104,7 +102,7 @@ const ScheduleCard = ({ target }) => {
             />
           </svg>
           <span className="text-sm font-medium ml-[10px]">
-            {target.howMany}
+            {target.participants.length}명
           </span>
         </div>
       </div>
