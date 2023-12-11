@@ -4,10 +4,8 @@ import { useRecoilValue } from "recoil";
 const Alert = () => {
   const alertMsg = useRecoilValue(alertAtom).msg; // 알림창 메세지
   return (
-    <div className="fixed left-0 z-50 flex items-center justify-center w-full bottom-20">
-      <div className="flex items-center justify-center w-1/3 h-10 font-bold text-white rounded-full bg-slate-600">
-        {alertMsg}
-      </div>
+    <div className="fixed left-1/2 -translate-x-1/2 bottom-20 z-50 flex items-center justify-center w-[900px] h-10 rounded-full bg-gray-600 text-white font-bold mx-auto">
+      {alertMsg}
     </div>
   );
 };
