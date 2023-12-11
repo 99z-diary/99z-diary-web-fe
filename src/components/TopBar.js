@@ -1,7 +1,7 @@
 const TopBar = () => {
   return (
     <>
-      <div className="fixed top-0 z-30 flex items-center justify-center w-screen bg-gray-600 h-14">
+      <div className="fixed top-0 z-30 flex items-center justify-center w-screen h-12 bg-gray-600">
         <div className="flex w-[1140px] justify-between items-center">
           {/* 로고, 타이틀 */}
           <div className="flex items-center">
