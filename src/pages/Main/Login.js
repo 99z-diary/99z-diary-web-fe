@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({ email: "", password: "" }); // 로그인 정보
+  const nav = useNavigate(); // nav 제어
   return (
     <div className="w-[250px] h-[300px] rounded-2xl shadow-figma bg-white">
       <div className="flex items-center justify-center w-full h-10 font-bold text-white bg-gray-600 rounded-t-2xl text-bold">
@@ -63,10 +65,16 @@ const Login = () => {
         </button>
         {/* 회원가입 & 이메일/비밀번호 찾기 버튼 */}
         <div className="w-[220px] flex justify-between mt-2">
-          <button className="text-sm font-medium text-gray-500 underline">
+          <button
+            className="text-sm font-medium text-gray-500 underline"
+            onClick={() => nav("/signup")}
+          >
             회원가입
           </button>
-          <button className="text-sm font-medium text-gray-500 underline">
+          <button
+            className="text-sm font-medium text-gray-500 underline"
+            onClick={() => nav("/find")}
+          >
             이메일/비밀번호 찾기
           </button>
         </div>

@@ -1,10 +1,13 @@
+import { useNavigate } from "react-router-dom";
+
 const TopBar = () => {
+  const nav = useNavigate(); // nav 제어
   return (
     <>
       <div className="fixed top-0 z-30 flex items-center justify-center w-screen h-12 bg-gray-600">
         <div className="flex w-[1140px] justify-between items-center">
           {/* 로고, 타이틀 */}
-          <div className="flex items-center">
+          <div className="flex items-center" onClick={() => nav("/")}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="28"
