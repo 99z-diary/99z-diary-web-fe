@@ -1,4 +1,5 @@
 import TopBar from "components/TopBar";
+import Find from "pages/Find/Find";
 import Main from "pages/Main/Main";
 import SignUp from "pages/SignUp/SignUp";
 import Alert from "popup/Alert";
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
+          <Route path="/find" element={<Find />}></Route>
         </Routes>
         {useRecoilValue(alertAtom).state && <Alert />}
       </div>
