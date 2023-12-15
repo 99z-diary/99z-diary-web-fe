@@ -8,9 +8,6 @@ import { useAlert } from "utils/useAlert";
 const BeforeLogin = () => {
   const [loginInfo, setLoginInfo] = useState({ email: "", password: "" }); // 로그인 정보
   const [userInfo, setUserInfo] = useRecoilState(userSelector); // user 정보
-  const emailRegex = new RegExp(
-    "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
-  ); // 이메일 정규표현식
   const nav = useNavigate(); // nav 제어
   const alert = useAlert(); // alert 제어
   return (
@@ -73,8 +70,6 @@ const BeforeLogin = () => {
               loginInfo.password.trim() === ""
             )
               alert.onAndOff("정보를 모두 입력해주세요!!");
-            else if (!emailRegex.test(loginInfo.email))
-              alert.onAndOff("이메일 형식을 맞춰서 입력해주세요!!");
             else
               await login(loginInfo)
                 .then((response) => {
