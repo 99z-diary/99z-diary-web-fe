@@ -24,3 +24,34 @@ export const getUserInfo = () => {
     method: "get",
   });
 };
+
+/**
+ * 이메일 찾기
+ * @param {object} info 찾아볼 유저의 정보
+ */
+export const findEmail = (info) => {
+  return api({
+    url: "/user/find/email",
+    method: "get",
+    params: {
+      name: info.name,
+      phone: info.phone,
+    },
+  });
+};
+
+/**
+ * 비밀번호 찾기
+ * @param {object} info 찾아볼 유저의 정보
+ */
+export const findPassword = (info) => {
+  return api({
+    url: "/user/find/password",
+    method: "post",
+    data: {
+      email: info.email,
+      name: info.name,
+      phone: info.phone,
+    },
+  });
+};
