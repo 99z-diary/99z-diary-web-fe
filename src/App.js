@@ -3,11 +3,13 @@ import Find from "pages/Find/Find";
 import Main from "pages/Main/Main";
 import SignUp from "pages/SignUp/SignUp";
 import Alert from "popup/Alert";
+import Loading from "popup/Loading";
 import { useEffect } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { alertAtom } from "recoil/alertAtom";
 import { authenticate } from "api/authApi";
+import { loadingAtom } from "recoil/loadingAtom";
 
 function App() {
   const nav = useNavigate(); // nav 제어
@@ -34,6 +36,7 @@ function App() {
           <Route path="/find" element={<Find />}></Route>
         </Routes>
         {useRecoilValue(alertAtom).state && <Alert />}
+        {useRecoilValue(loadingAtom).state && <Loading />}
       </div>
     </>
   );
