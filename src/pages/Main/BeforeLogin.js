@@ -1,9 +1,15 @@
+import { login } from "api/userApi";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { userSelector } from "recoil/userAtom";
+import { useAlert } from "utils/useAlert";
 
-const Login = () => {
+const BeforeLogin = () => {
   const [loginInfo, setLoginInfo] = useState({ email: "", password: "" }); // 로그인 정보
+  const [userInfo, setUserInfo] = useRecoilState(userSelector); // user 정보
   const nav = useNavigate(); // nav 제어
+  const alert = useAlert(); // alert 제어
   return (
     <div className="w-[250px] h-[300px] rounded-2xl shadow-figma bg-white">
       <div className="flex items-center justify-center w-full h-10 font-bold text-white bg-gray-600 rounded-t-2xl text-bold">
@@ -25,7 +31,6 @@ const Login = () => {
           </svg>
           <input
             className="w-full h-full text-sm font-medium ml-[10px] focus:outline-none placeholder:text-sm placeholder:text-gray-500 placeholder:font-medium"
-            type="email"
             placeholder="이메일"
             onChange={(email) => {
               const tmp = { ...loginInfo, email: email.target.value };
@@ -59,7 +64,23 @@ const Login = () => {
         {/* 로그인 버튼 */}
         <button
           className="w-[220px] h-9 font-bold text-sm text-white rounded-[10px] mt-5 bg-gray-600 hover:shadow-figma"
-          onClick={() => console.log(loginInfo)}
+          onClick={async () => {
+            if (
+              loginInfo.email.trim() === "" ||
+              loginInfo.password.trim() === ""
+            )
+              alert.onAndOff("정보를 모두 입력해주세요!!");
+            else
+              await login(loginInfo)
+                .then((response) => {
+                  console.log("로그인 / 성공 : ", response.data);
+                  setUserInfo(response.data);
+                })
+                .catch((error) => {
+                  console.log("로그인 / 실패 : ", error.response);
+                  alert.onAndOff(error.response.data.message);
+                });
+          }}
         >
           로그인
         </button>
@@ -83,4 +104,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default BeforeLogin;

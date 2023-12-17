@@ -1,16 +1,11 @@
 import api from "./interceptors";
 
 /**
- * 로그인 api
- * @param {*} info 유저의 아이디, 비밀번호
+ * 쿠키 인증 api
  */
-export const login = (info) => {
+export const authenticate = () => {
   return api({
-    url: "/user/login",
-    method: "post",
-    data: {
-      name: info.name,
-      phone: info.phone,
-    },
+    url: "/auth/authenticate",
+    method: "get",
   });
 };
