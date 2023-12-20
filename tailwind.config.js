@@ -57,6 +57,12 @@ module.exports = withMT({
         "figma-226": "2px 2px 6px 0px rgba(0,0,0,0.10)",
         "figma-666": "6px 6px 6px 0px rgba(0,0,0,0.10)",
       },
+      borderRadius: {
+        15: "15px",
+      },
+      borderWidth: {
+        1: "1px",
+      },
     },
   },
   plugins: [],

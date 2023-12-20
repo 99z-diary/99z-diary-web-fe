@@ -21,7 +21,7 @@ const Main = () => {
   }, []);
   return (
     <>
-      <div className="w-[1140px] flex justify-between mx-auto pt-16">
+      <div className="w-[1140px] flex justify-between mx-auto pt-[100px]">
         {userInfo.user_id < 0 ? <BeforeLogin /> : <AfterLogin />}
         <GroupList />
       </div>
