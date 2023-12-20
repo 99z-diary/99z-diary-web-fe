@@ -1,4 +1,4 @@
-import TopBar from "components/TopBar";
+import BeforeTopBar from "components/BeforeTopBar";
 import Find from "pages/Find/Find";
 import Main from "pages/Main/Main";
 import SignUp from "pages/SignUp/SignUp";
@@ -28,8 +28,8 @@ function App() {
   }, []);
   return (
     <>
-      <div className="w-[100vw] h-[100vh] bg-gray-100">
-        <TopBar />
+      <div className="w-[100vw] h-[100vh] bg-bg-base">
+        <BeforeTopBar />
         <Routes>
           <Route path="/" element={<Main />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
